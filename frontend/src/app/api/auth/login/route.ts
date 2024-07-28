@@ -12,6 +12,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         const result = await signIn("credentials", { redirect: false, email, password });
 
         // handle the result of the sign-in attempt
+        console.log('login result', result);
         if (!result || result.error) {
             return NextResponse.json({ error: "Invalid credentials" });
         } else {

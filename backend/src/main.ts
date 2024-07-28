@@ -4,7 +4,7 @@ import * as process from 'node:process';
 import helmet from 'helmet';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import rateLimit from 'express-rate-limit';
-import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const port = process.env.PORT;
 
@@ -19,7 +19,7 @@ async function bootstrap() {
   app.use(
     rateLimit({
       windowMs: 15 * 60 * 1000,
-      max: 100,
+      limit: 10000,
     }),
   );
 

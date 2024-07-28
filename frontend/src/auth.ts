@@ -2,6 +2,7 @@ import type {Account, NextAuthConfig, Session, User} from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import {JWT} from "next-auth/jwt";
+import { AdapterUser } from "next-auth/adapters";
 import {UserResponseType, UserType} from "@/type/user";
 import {CredentialsType} from "@/type/login";
 import {decodeJwt} from "jose";
@@ -9,6 +10,10 @@ import {decodeJwt} from "jose";
 // Modify NextAuth types with custom properties
 declare module "next-auth" {
     interface User extends UserType {}
+}
+
+declare module "next-auth/adapters" {
+    interface AdapterUser extends UserType {}
 }
 
 declare module "next-auth/jwt" {
@@ -121,6 +126,7 @@ const authOptions = {
             return session;
         },
     },
+    //trustHost: true,
     pages: {
         signIn: "/login",
         // error: "/auth/error",

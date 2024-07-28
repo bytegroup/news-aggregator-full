@@ -23,9 +23,9 @@ import * as process from 'node:process';
       inject: [ConfigService],
     }),
     MongooseModule.forRoot(process.env.MONGODB_URI, {
-      user: process.env.MONGO_USER,
-      pass: process.env.MONGO_PASS,
-      dbName: process.env.MONGO_DB,
+      user: process.env.MONGODB_USER,
+      pass: process.env.MONGODB_PASS,
+      dbName: process.env.MONGODB_DB,
     }),
   ],
 })

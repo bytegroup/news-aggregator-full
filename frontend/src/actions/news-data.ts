@@ -36,7 +36,7 @@ export async function getNewsSources(token: string):Promise<string[]> {
             if (data.code === 200 || data.code === 201) {
                 return data;
             } else {
-                console.error('news feed get err: ',data)
+                console.error('news sources get err: ',data)
                 return [];
             }
         }
@@ -66,7 +66,7 @@ export async function searchNews(token: string, searchKey: string, source: strin
         //console.log("news data", data);
         return await mapping(data);
     }catch (err:any) {
-        console.error("news feed service error:", err);
+        console.error("news search service error:", err);
         return [];
     }
 }
