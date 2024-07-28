@@ -60,7 +60,7 @@ export async function settingsAction(prevState: any, formData: FormData) {
 }
 
 const settingsValidations = z.object({
-    id: z.string(),
+    id: z.number(),
     source: z.string(),
     searchkey: z.string(),
     tags: z.string(),

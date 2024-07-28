@@ -13,6 +13,7 @@ type UserResponseType = {
     email: string;
     accessToken: string;
     refreshToken: string;
+    user: any;
 };
 
 export type { UserType, UserResponseType };

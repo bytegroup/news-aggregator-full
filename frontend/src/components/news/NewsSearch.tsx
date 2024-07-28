@@ -63,7 +63,7 @@ export function NewsSearch(){
     }
     useEffect(() => {
         fetchNews();
-    }, []);
+    }, [fetchNews]);
     return (
         <div className="container mx-auto py-0">
             <form onSubmit={handleSubmit} className='flex-row'>

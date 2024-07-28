@@ -45,10 +45,9 @@ export function LoginForm() {
     useEffect(() => {
         if (authenticated) {
             // Redirect to previous page or home page
-            const next = searchParams.get("next") || "/";
-            window.location.href = next;
+            window.location.href = searchParams.get("next") || "/";
         }
-    }, [authenticated]);
+    }, [authenticated, searchParams]);
 
     return (
         <div className="w-full max-w-md">

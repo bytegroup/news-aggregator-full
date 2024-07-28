@@ -46,7 +46,7 @@ services:
   news-aggregator-server:
     build:
       context: ./backend
-      dockerfile: ./backend/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "4001:4001"
     depends_on:
@@ -57,7 +57,7 @@ services:
   news-aggregator-client:
     build:
       context: ./frontend
-      dockerfile: ./frontend/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:

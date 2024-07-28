@@ -11,10 +11,6 @@ declare module "next-auth" {
     interface User extends UserType {}
 }
 
-declare module "next-auth/adapters" {
-    interface AdapterUser extends UserType {}
-}
-
 declare module "next-auth/jwt" {
     interface JWT extends UserType{
         access_token: string
