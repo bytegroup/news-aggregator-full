@@ -1,6 +1,6 @@
 import {News} from "@/app/(news)/feeds/columns";
 
-const baseUrl=process.env.NEXT_PUBLIC_URL || 'http://localhost:4001';
+const baseUrl=process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:4001';
 
 export async function getNewsFeed(token: string):Promise<News[]> {
     const url = new URL('/news/feeds/', baseUrl);

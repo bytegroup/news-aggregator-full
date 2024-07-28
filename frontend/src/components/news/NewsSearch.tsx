@@ -13,7 +13,7 @@ import {useToast} from "@/components/ui/use-toast";
 import {sourceLabel} from "@/lib/utils";
 
 export function NewsSearch(){
-    const baseUrl=process.env.NEXT_PUBLIC_URL || 'http://localhost:4001';
+    const baseUrl=process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:4001';
     const { toast } = useToast()
     const {data: session} = useSession();
     const token = session?.user?.accessToken ? session?.user?.accessToken : '';
