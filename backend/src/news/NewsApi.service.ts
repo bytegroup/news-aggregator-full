@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import * as process from 'node:process';
 import {
+  filterNewsApiByTags,
   filterResultUsingTags,
   newsApiResultMapNewsDto,
 } from '../utilities/utils';
@@ -26,7 +27,7 @@ export class NewsApiService {
     //console.log('newsApi: res', res.data.articles);
 
     if (tags) {
-      res.data.articles = await filterResultUsingTags(res.data.articles, tags);
+      res.data.articles = await filterNewsApiByTags(res.data.articles, tags);
     }
 
     res.data.articles = await newsApiResultMapNewsDto(

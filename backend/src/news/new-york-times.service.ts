@@ -3,6 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import * as process from 'node:process';
 import { firstValueFrom } from 'rxjs';
 import {
+  filterNewYorkTimesByTags,
   filterResultUsingTags,
   newYorkTimesResultMapNewsDto,
 } from '../utilities/utils';
@@ -27,7 +28,7 @@ export class NewYorkTimesService {
     //console.log('nytime: res', res.data.response.docs);
 
     if (tags) {
-      res.data.response.docs = await filterResultUsingTags(
+      res.data.response.docs = await filterNewYorkTimesByTags(
         res.data.response.docs,
         tags,
       );

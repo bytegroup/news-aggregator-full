@@ -1,5 +1,7 @@
+"use server";
+
 export interface UserSettingsProps {
-    id:number | null;
+    id: string | null;
     source: string | null;
     searchkey: string | null;
     tags: string | null;
@@ -9,7 +11,7 @@ const baseUrl=process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:4001';
 
 export async function saveSettings(token:string, settings: UserSettingsProps) {
     const url = new URL("/news/settings" , baseUrl);
-    //console.log("submit form: ", settings);
+    console.log("submit form: ", settings);
     try {
         const response = await fetch(url, {
             method: "POST",

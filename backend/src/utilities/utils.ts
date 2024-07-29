@@ -15,6 +15,15 @@ export const comparePasswords = async (userPassword, currentPassword) => {
 export const filterResultUsingTags = async (result: any[], tags: string) => {
   return result?.filter((item) => item.author?.includes(tags));
 };
+export const filterNewsApiByTags = async (result: any[], tags: string) => {
+  return result?.filter((item) => item.author?.includes(tags));
+};
+export const filterTheGuardianByTags = async (result: any[], tags: string) => {
+  return result?.filter((item) => item.pillarName?.includes(tags));
+};
+export const filterNewYorkTimesByTags = async (result: any[], tags: string) => {
+  return result?.filter((item) => item.source?.includes(tags));
+};
 
 export const newsApiResultMapNewsDto = async (
   result: any[],

@@ -27,7 +27,7 @@ export function Settings() {
         settingsAction,
         INIT_STATE
     );
-    const [id, setId] = useState<number>();
+    const [id, setId] = useState<string>();
     const [source, setSource] = useState<string>();
     const [sources, setSources] = useState<string[]>([]);
     const [searchkey, setSearchkey] = useState<string>();
@@ -38,7 +38,7 @@ export function Settings() {
     const fetchSettings = async () => {
         const data = await getSettings(token);
         console.log("data", data);
-        setId(data?.id ? data.id : 0);
+        setId(data?.id ? data.id : '0');
         setSource(data?.source ? data.source : "");
         setSearchkey(data?.searchkey ? data.searchkey : "");
         setTags(data?.tags ? data.tags : "");

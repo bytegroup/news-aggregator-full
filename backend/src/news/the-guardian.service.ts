@@ -3,7 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import * as process from 'node:process';
 import { firstValueFrom } from 'rxjs';
 import {
-  filterResultUsingTags,
+  filterResultUsingTags, filterTheGuardianByTags,
   theGuardianResultMapNewsDto,
 } from '../utilities/utils';
 import { Sources } from './enums/sources.enum';
@@ -24,7 +24,7 @@ export class TheGuardianService {
     );
     //console.log('guardian: res', res.data.response.results);
     if (tags) {
-      res.data.response.results = await filterResultUsingTags(
+      res.data.response.results = await filterTheGuardianByTags(
         res.data.response.results,
         tags,
       );

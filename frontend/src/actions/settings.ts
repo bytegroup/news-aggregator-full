@@ -26,6 +26,7 @@ export async function settingsAction(prevState: any, formData: FormData) {
     }
 
     const responseData = await saveSettings(token, validatedFields.data);
+    console.log('Settings save response: ', responseData);
     if (!responseData) {
         return {
             ...prevState,
@@ -60,7 +61,7 @@ export async function settingsAction(prevState: any, formData: FormData) {
 }
 
 const settingsValidations = z.object({
-    id: z.number(),
+    id: z.string(),
     source: z.string(),
     searchkey: z.string(),
     tags: z.string(),

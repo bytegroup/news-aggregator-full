@@ -1,3 +1,5 @@
+"use server";
+
 import {News} from "@/app/(news)/feeds/columns";
 
 const baseUrl=process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:4001';
@@ -7,6 +9,7 @@ export async function getNewsFeed(token: string):Promise<News[]> {
     try {
         const res = await fetch(url, {
             headers: { Authorization: "Bearer " + token },
+            cache: "no-cache",
         });
         const data = await res.json();
         if (data.code) {
@@ -29,7 +32,11 @@ export async function getNewsSources(token: string):Promise<string[]> {
     const url = new URL('/news/sources', baseUrl);
     try {
         const res = await fetch(url, {
-            headers: { Authorization: "Bearer " + token },
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json",
+            },
+            cache: "no-cache",
         });
         const data = await res.json();
         if (data.code) {
@@ -53,6 +60,7 @@ export async function searchNews(token: string, searchKey: string, source: strin
     try {
         const res = await fetch(url, {
             headers: { Authorization: "Bearer " + token },
+            cache: "no-cache",
         });
         const data = await res.json();
         if (data.code) {

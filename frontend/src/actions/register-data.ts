@@ -1,3 +1,5 @@
+"use server"
+
 interface RegisterUserProps {
     name: string;
     email: string;

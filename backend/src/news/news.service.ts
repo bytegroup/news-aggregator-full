@@ -98,21 +98,25 @@ export class NewsService {
   @Cron(process.env.NEWS_FEEDS_TIMER)
   public async populateNewsFeed() {
     const settings = await this.newsSettingsRepository.find();
+    console.log('feed trigger - news-settings', settings);
     const settingsMap: Map<number, NewsSettings> = new Map();
     settings.forEach((setting) => {
-      settingsMap.set(setting.id, setting);
+      settingsMap.set(setting.userId, setting);
     });
-    const userIds = settingsMap.keys();
+    const userIds = settings.map((setting) => setting.userId);
+    console.log('feed trigger - user ids', userIds);
     const users = await this.usersRepository.find({
       where: { id: In([...userIds]) },
     });
-
+    console.log('feed trigger - users', users);
     for (const user of users) {
       await this.generateNewsFeed(user, settingsMap.get(user.id));
     }
   }
 
   private async generateNewsFeed(user: User, newsSettings: NewsSettings) {
+    console.log('generate news feed - user', user);
+    console.log('generate news feed - settings', newsSettings);
     switch (newsSettings.source) {
       case Sources.NEWS_API:
         const newsApiJob = await this.newsApiQueue.add(Sources.NEWS_API, {
